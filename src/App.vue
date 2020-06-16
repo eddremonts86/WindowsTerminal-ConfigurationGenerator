@@ -1,32 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-app-bar app color="white" dark>
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="http://eddremonts.dk/themes/thebakerdev-zenii/assets/dist/images/logo.svg?ver1"
+          transition="scale-transition"
+          width="140"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn class="primary" href="https://eddremonts.dk" target="_blank" text>
+        <span class="mr-2">Profile</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-content>
+      <HelloWorld transition="scale-transition" />
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import HelloWorld from "./components/HelloWorld";
 
-#nav {
-  padding: 30px;
+export default {
+  name: "App",
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  components: {
+    HelloWorld
+  },
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  data: () => ({
+    //
+  })
+};
+</script>
