@@ -30,8 +30,14 @@
                     <form>
                       <h2>{{ global_key }}</h2>
                       <div v-for="(ite, key) in tabs" :key="key">
-                      <span v-if="ite.default != '' ? changeModel(ite, global_key) : ''"></span>   
-                      <v-row>
+                        <span
+                          v-if="
+                            ite.default != ''
+                              ? changeModel(ite, global_key)
+                              : ''
+                          "
+                        ></span>
+                        <v-row>
                           <v-col cols="10">
                             <ValidationProvider
                               v-if="ite.type == 'String'"
@@ -353,7 +359,7 @@ export default {
           property: "confirmCloseAllTabs	",
           necessity: "Optional",
           type: "Boolean",
-          default: "true",
+          default: true,
           values: [],
           desc:
             "When set to true closing a window with multiple tabs open WILL require confirmation. When set to false closing a window with multiple tabs open WILL NOT require confirmation."
@@ -362,7 +368,7 @@ export default {
           property: "startOnUserLogin",
           necessity: "Optional",
           type: "Boolean",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true enables the launch of Windows Terminal at startup. Setting to false will disable the startup task entry. Note: if the Windows Terminal startup task entry is disabled either by org policy or by user action this setting will have no effect."
@@ -371,7 +377,7 @@ export default {
           property: "experimental.rendering.forceFullRepaint",
           necessity: "Optional",
           type: "Boolean",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true, we will redraw the entire screen each frame. When set to false, we will render only the updates to the screen between frames."
@@ -380,7 +386,7 @@ export default {
           property: "experimental.rendering.software",
           necessity: "Optional",
           type: "Boolean",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true, we will use the software renderer (a.k.a. WARP) instead of the hardware one."
@@ -389,7 +395,7 @@ export default {
           property: "alwaysShowTabs",
           type: "Boolean",
           necessity: "Required",
-          default: "true",
+          default: true,
           values: [],
           desc:
             "When set to true, tabs are always displayed. When set to false and showTabsInTitlebar is set to false, tabs only appear after typing Ctrl + T."
@@ -398,7 +404,7 @@ export default {
           property: "copyOnSelect",
           type: "Boolean",
           necessity: "Optional",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true, a selection is immediately copied to your clipboard upon creation. When set to false, the selection persists and awaits further action."
@@ -407,7 +413,7 @@ export default {
           property: "copyFormatting",
           type: "Boolean",
           necessity: "Optional",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true, the color and font formatting of selected text is also copied to your clipboard. When set to false, only plain text is copied to your clipboard."
@@ -416,7 +422,7 @@ export default {
           property: "showTerminalTitleInTitlebar",
           necessity: "Required",
           type: "Boolean",
-          default: "true",
+          default: true,
           values: [],
           desc:
             "When set to true, titlebar displays the title of the selected tab. When set to false, titlebar displays 'Windows Terminal'."
@@ -425,7 +431,7 @@ export default {
           property: "showTabsInTitlebar",
           necessity: "Optional",
           type: "Boolean",
-          default: "true",
+          default: true,
           values: [],
           desc:
             "When set to true, the tabs are moved into the titlebar and the titlebar disappears. When set to false, the titlebar sits above the tabs."
@@ -434,7 +440,7 @@ export default {
           property: "snapToGridOnResize",
           necessity: "Optional",
           type: "Boolean",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true, the window will snap to the nearest character boundary on resize. When false, the window will resize 'smoothly'"
@@ -626,7 +632,7 @@ export default {
           property: "hidden",
           type: "Boolean",
           necessity: "Optional",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "If set to true, the profile will not appear in the list of profiles. This can be used to hide default profiles and dynamically generated profiles, while leaving them in your settings file."
@@ -679,7 +685,7 @@ export default {
           property: "snapOnInput",
           type: "Boolean",
           necessity: "Optional",
-          default: "true",
+          default: true,
           values: [],
           desc:
             "When set to true, the window will scroll to the command input line when typing. When set to false, the window will not scroll when you start typing."
@@ -688,7 +694,7 @@ export default {
           property: "altGrAliasing",
           type: "Boolean",
           necessity: "Optional",
-          default: "true",
+          default: true,
           values: [],
           desc:
             "By default Windows treats Ctrl+Alt as an alias for AltGr. When altGrAliasing is set to false, this behavior will be disabled."
@@ -714,7 +720,7 @@ export default {
           property: "suppressApplicationTitle",
           type: "Boolean",
           necessity: "Optional",
-          default: "false",
+          default: false,
           values: [],
           desc:
             "When set to true, tabTitle overrides the default title of the tab and any title change messages from the application will be suppressed. When set to false, tabTitle behaves as normal."
@@ -732,7 +738,7 @@ export default {
           property: "useAcrylic",
           type: "Boolean",
           necessity: "Optional",
-          default: "",
+          default: false,
           values: [],
           desc:
             "When set to true, the window will have an acrylic background. When set to false, the window will have a plain, untextured background. The transparency only applies to focused windows due to OS limitation."
@@ -741,7 +747,7 @@ export default {
           property: "experimental.retroTerminalEffect	",
           type: "Boolean",
           necessity: "Optional",
-          default: "",
+          default: false,
           values: [],
           desc:
             "When set to true, enable retro terminal effects. This is an experimental feature, and its continued existence is not guaranteed."
@@ -978,8 +984,9 @@ export default {
       }
     },
     changeModel(ite, global_key) {
-      this.json[global_key][ite.property] = ite.default;
-      console.log(this.json);
+      if (this.json[global_key][ite.property] == undefined) {
+        this.json[global_key][ite.property] = ite.default;
+      }
     },
     showDesc(description) {
       this.desc = description;
