@@ -16,16 +16,14 @@
         <span>Home</span>
       </v-btn>
 
-      <v-btn text color="blue darken-4" href="/generator">
-        <span>Generaor</span>
-      </v-btn>
+     
       <v-btn
         text
         color="blue darken-4"
         href="https://eddremonts.dk"
         target="_blank"
       >
-        <span class="mr-2">About me</span>
+        <span class="mr-2">About the autor</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>

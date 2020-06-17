@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-content class="first_row">
+    <v-main class="first_row">
       <v-container>
         <v-row class="row_">
           <v-col cols="6">
@@ -9,7 +9,7 @@
               Settings Generator for Windows Terminal the modern, fast,
               efficient, powerful, and productive terminal application.
             </h2>
-            <v-btn class="mt-10 primary" href="/generator">
+            <v-btn class="mt-10 primary" href="#" v-scroll-to="'#generator'">
               Gnerate settings
             </v-btn>
           </v-col>
@@ -17,14 +17,14 @@
           <v-col cols="6">
             <img
               class="terminal_img"
-              src="https://www.softzone.es/app/uploads-softzone.es/2020/05/Windows-Terminal-con-efecto-acr%C3%ADlico-800x419.jpg"
+              src="http://images.eddremonts.dk/windowsTerminal/terminal.webp"
               width="100%"
             />
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
-    <v-content class="">
+    </v-main>
+    <v-main class="">
       <v-container>
         <v-row class="row_">
           <v-col cols="12 center">
@@ -32,7 +32,7 @@
           </v-col>
           <v-col cols="6">
             <img
-              src="https://2vplsu2wo1292qcj331fo1gj-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/windows_terminal_icon-1-728x409.jpg"
+              src="http://images.eddremonts.dk/windowsTerminal/terminal_ico.jpg"
               width="100%"
             />
           </v-col>
@@ -53,7 +53,8 @@
                   </p>
                   <p>
                     This is an open source project and we welcome community
-                    participation. To participate please visit
+                    participation. <br />
+                    To participate please visit
                     https://github.com/microsoft/terminal
                   </p>
                 </div>
@@ -62,12 +63,23 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
+
+    <v-main class="first_row" id="generator">
+      <v-container>
+        <v-row class="row_">
+          <v-col cols="12">
+            <generator />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
   </div>
 </template>
 
 <script>
-export default { name: "Home" };
+import generator from "../components/generator.vue";
+export default { name: "Home", components: { generator } };
 </script>
 
 <style>

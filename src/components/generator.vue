@@ -1,7 +1,6 @@
 <template>
-<v-content class="first_row">
-  
-    <v-row class="mx-16">
+  <v-content>
+    <v-row>
       <v-col cols="6">
         <v-card>
           <v-tabs
@@ -29,7 +28,9 @@
                 <v-card-text class="left mb-10">
                   <ValidationObserver ref="observer">
                     <form>
-                      <h2>{{ global_key }}</h2>
+                      <h1 class="mb-5">
+                        Generate - {{ global_key }} Configuration
+                      </h1>
                       <div v-for="(ite, key) in tabs" :key="key">
                         <span
                           v-if="
@@ -200,7 +201,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-   
   </v-content>
 </template>
 
@@ -258,7 +258,35 @@ export default {
     /* App */
     desc: "",
     itemList: {
-      Globals: [
+       Keybinding: [
+        {
+          property: "command",
+          type: "String",
+          necessity: "Required",
+          default: "",
+          values: [],
+          desc:
+            "The command executed when the associated key bindings are pressed."
+        },
+        {
+          property: "keys",
+          type: "Text",
+          necessity: "Required",
+          default: "",
+          values: [],
+          desc:
+            "Defines the key combinations used to call the command. <a href='https://github.com/microsoft/terminal/blob/master/doc/cascadia/SettingsSchema.md#keys' target='blank'>More info  </a> "
+        },
+        {
+          property: "action",
+          type: "String",
+          necessity: "Required",
+          default: "",
+          values: [],
+          desc: "Adds additional functionality to certain commands."
+        }
+      ],
+      Global: [
         {
           property: "defaultProfile",
           type: "String",
@@ -443,7 +471,7 @@ export default {
             "When set to true, the window will snap to the nearest character boundary on resize. When false, the window will resize 'smoothly'"
         }
       ],
-      Profiles: [
+      Profile: [
         {
           property: "guid",
           type: "String",
@@ -919,42 +947,15 @@ export default {
           values: [],
           desc: "Sets the color used as ANSI yellow."
         }
-      ],
-      Keybindings: [
-        {
-          property: "command",
-          type: "String",
-          necessity: "Required",
-          default: "",
-          values: [],
-          desc:
-            "The command executed when the associated key bindings are pressed."
-        },
-        {
-          property: "keys",
-          type: "Text",
-          necessity: "Required",
-          default: "",
-          values: [],
-          desc:
-            "Defines the key combinations used to call the command. <a href='https://github.com/microsoft/terminal/blob/master/doc/cascadia/SettingsSchema.md#keys' target='blank'>More info  </a> "
-        },
-        {
-          property: "action",
-          type: "String",
-          necessity: "Required",
-          default: "",
-          values: [],
-          desc: "Adds additional functionality to certain commands."
-        }
       ]
+     
     },
     tab: null,
     dialog: false,
     json: {
-      Globals: {},
-      Profiles: {},
-      Keybindings: {},
+      Global: {},
+      Profile: {},
+      Keybinding: {},
       Schema: {}
     },
     errors: "",

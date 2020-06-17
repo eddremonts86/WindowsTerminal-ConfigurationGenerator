@@ -19,7 +19,7 @@ const routes = [
   {
     path: "/generator",
     name: "Generator",
-    component: () => import("@/components/generator.vue")
+    component: () => import("../components/generator.vue")
   }
 ];
 
