@@ -50,7 +50,7 @@
                               <v-text-field
                                 v-model="json[global_key][ite.property]"
                                 :error-messages="errors"
-                                :label="ite.property"
+                                :label="(ite.necessity==='Required') ? ite.property + '*': ite.property"
                                 :data-vv-name="ite.property"
                                 outlined
                                 @keyup="reloadJsonDOM++"
@@ -66,7 +66,7 @@
                               <v-text-field
                                 v-model="json[global_key][ite.property]"
                                 :error-messages="errors"
-                                :label="ite.property"
+                                :label="(ite.necessity==='Required') ? ite.property + '*': ite.property"
                                 :data-vv-name="ite.property"
                                 outlined
                                 @keyup="reloadJsonDOM++"
@@ -81,7 +81,7 @@
                               <v-text-field
                                 v-model="json[global_key][ite.property]"
                                 :error-messages="errors"
-                                :label="ite.property"
+                                :label="(ite.necessity==='Required') ? ite.property + '*': ite.property"
                                 :data-vv-name="ite.property"
                                 outlined
                                 @keyup="reloadJsonDOM++"
@@ -97,7 +97,7 @@
                                 v-model="json[global_key][ite.property]"
                                 :error-messages="errors"
                                 :value="ite.default"
-                                :label="ite.property"
+                                :label="(ite.necessity==='Required') ? ite.property + '*': ite.property"
                                 :data-vv-name="ite.property"
                                 type="checkbox"
                                 required
@@ -115,7 +115,7 @@
                                 v-model="json[global_key][ite.property]"
                                 :items="ite.values"
                                 :error-messages="errors"
-                                :label="ite.property"
+                                :label="(ite.necessity==='Required') ? ite.property + '*': ite.property"
                                 :data-vv-name="ite.property"
                                 outlined
                                 @keyup="reloadJsonDOM++"
@@ -130,7 +130,7 @@
                               <v-textarea
                                 outlined
                                 :name="ite.property"
-                                :label="ite.property"
+                                :label="(ite.necessity==='Required') ? ite.property + '*': ite.property"
                                 :value="ite.property"
                                 v-model="json[global_key][ite.property]"
                                 @keyup="reloadJsonDOM++"
